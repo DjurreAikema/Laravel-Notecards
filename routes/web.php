@@ -18,4 +18,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
-Route::get('/home', 'HomeController@dashboard')->name('dashboard');
+Route::get('/home', 'CardController@index')->name('dashboard');
+
+Route::group(['prefix' => 'cards'], function () {
+    Route::get('/create', 'CardController@create')->name('create.card');
+    Route::post('/store', 'CardController@store')->name('store.card');
+});
