@@ -19,11 +19,13 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body>
-    <div id="app">
+<body class="body-background" style="background-image:url({{ url("/media/bgi.jpeg") }});background-position: center;background-repeat: no-repeat;background-size: cover;">
+    <div id="app" class="app-background">
         @include('layouts.includes.nav')
 
         @yield('content')
+
+        @include('layouts.includes.footer')
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

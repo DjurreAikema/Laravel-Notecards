@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark cerulean m-b-50">
+<nav class="navbar navbar-expand-lg navbar-dark cerulean m-b-50 shadow">
     <a class="navbar-brand m-l-50" href="{{ route('index') }}">Note cards</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
