@@ -14,13 +14,13 @@
     </div>
     <div class="row w-100 p-b-100">
         <div class="offset-md-1"></div>
-        {{-- Softdeleted cards --}}
+        {{-- Finished cards --}}
         <div class="col-md-8">
-            <div class="row p-3 trashed-cards">
+            <div class="row p-3 finished-cards">
                 @if($cards->isEmpty())
                     <div class="offset-md-3"></div>
                     <div class="col-md-8">
-                        <h1>There are no cards in your trash bin</h1>
+                        <h1>You have no finished cards</h1>
                     </div>
                 @endif
                 @foreach($cards as $card)
@@ -32,8 +32,8 @@
                                 <p class="card-text">{{ $card->content }}</p>
                                 <hr>
                                 <a href="#" class="card-link">Restore card</a>
-                                <a href="{{ route('delete.card', $card->id) }}"
-                                   class="card-link btn btn-outline-danger ">Delete card</a>
+                                <a href="{{ route('remove.card', $card->id) }}"
+                                   class="card-link btn btn-outline-danger ">Remove card</a>
                             </div>
                         </div>
                     </div>
@@ -41,7 +41,7 @@
             </div>
         </div>
         {{-- Side menu --}}
-        <div class="col-md-3 p-3">
+        <div class="col-md-3">
             <div class="side-menu p-l-30 p-t-20 p-b-50 shadow">
                 <ul>
                     <li>View finished cards</li>

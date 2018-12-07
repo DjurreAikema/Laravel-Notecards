@@ -7,6 +7,7 @@ use App\Status;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class CardController extends Controller
 {
@@ -69,6 +70,12 @@ class CardController extends Controller
         //
     }
 
+    public function finish($id)
+    {
+        $card = Card::where('id', $id)->update(['status_id' => 3]);
+        return back()->with('message', 'Card moved to finished!');
+    }
+
     public function softdelete($id)
     {
         $card = Card::where('id', $id);
@@ -82,6 +89,14 @@ class CardController extends Controller
             'cards' => $cards = Card::onlyTrashed()->get()
         );
         return view('cards.trash')->with($data);
+    }
+
+    public function finished()
+    {
+        $data = array(
+            'cards' => $cards = Card::where('status_id', 3)->get()
+        );
+        return view('cards.finished')->with($data);
     }
 
     public function destroy($id)

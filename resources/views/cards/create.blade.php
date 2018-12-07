@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="row">
+    <div class="row w-100 p-b-100">
         <div class="offset-md-2"></div>
-        <div class="col-md-4">
+        <div class="col-md-4 card p-4">
             <div>
                 <h4>Create a new card</h4>
-                <hr>
+                <hr class="aluminium">
             </div>
 
             {{-- Create card form --}}
@@ -14,7 +14,9 @@
                 @csrf
                 <div class="form-group">
                     <label for="title">Card title</label>
-                    <input name="title" type="text" class="form-control {{ $errors->has('title') ? ' is-invalid' : '' }}" id="title" value="{{ old('title') }}">
+                    <input name="title" type="text"
+                           class="form-control {{ $errors->has('title') ? ' is-invalid' : '' }}" id="title"
+                           value="{{ old('title') }}">
                     @if ($errors->has('title'))
                         <span class="invalid-feedback">
                             <strong>{{ $errors->first('title') }}</strong>
@@ -23,7 +25,9 @@
                 </div>
                 <div class="form-group">
                     <label for="subtitle">Card subtitle</label>
-                    <input name="subtitle" type="text" class="form-control {{ $errors->has('subtitle') ? ' is-invalid' : '' }}" id="subtitle" value="{{ old('subtitle') }}">
+                    <input name="subtitle" type="text"
+                           class="form-control {{ $errors->has('subtitle') ? ' is-invalid' : '' }}" id="subtitle"
+                           value="{{ old('subtitle') }}">
                     @if ($errors->has('subtitle'))
                         <span class="invalid-feedback">
                             <strong>{{ $errors->first('subtitle') }}</strong>
@@ -32,7 +36,9 @@
                 </div>
                 <div class="form-group">
                     <label for="cardcontent">Card content</label>
-                    <input name="cardcontent" type="text" class="form-control {{ $errors->has('cardcontent') ? ' is-invalid' : '' }}" id="cardcontent" value="{{ old('cardcontent') }}">
+                    <input name="cardcontent" type="text"
+                           class="form-control {{ $errors->has('cardcontent') ? ' is-invalid' : '' }}" id="cardcontent"
+                           value="{{ old('cardcontent') }}">
                     @if ($errors->has('cardcontent'))
                         <span class="invalid-feedback">
                             <strong>{{ $errors->first('cardcontent') }}</strong>
@@ -41,7 +47,8 @@
                 </div>
                 <div class="form-group">
                     <label for="status">Card status</label>
-                    <select name="status" class="form-control {{ $errors->has('cardcontent') ? ' is-invalid' : '' }}" id="status" value="{{ old('status') }}">
+                    <select name="status" class="form-control {{ $errors->has('cardcontent') ? ' is-invalid' : '' }}"
+                            id="status" value="{{ old('status') }}">
                         {{ var_dump($statuses) }}
                         @foreach($statuses as $status)
                             <option value="{{$status->id}}">{{ $status->status }}</option>
@@ -53,6 +60,7 @@
                         </span>
                     @endif
                 </div>
+                <hr class="aluminium m-t-25 m-b-25">
                 <div class="form-group">
                     <button class="btn btn-primary" type="submit">Save new card</button>
                 </div>
@@ -62,14 +70,12 @@
 
         {{-- Side menu --}}
         <div class="col-md-3">
-            <a class="btn btn-outline-success m-l-10 m-b-30">
-                Add new card
-            </a>
-            <hr class="m-r-100">
-            <ul>
-                <li>View finished cards</li>
-                <li>View removed cards</li>
-            </ul>
+            <div class="side-menu p-l-30 p-t-20 p-b-50 shadow">
+                <ul>
+                    <li>View finished cards</li>
+                    <li><a href="{{ route('trash.card') }}">View removed cards</a></li>
+                </ul>
+            </div>
         </div>
     </div>
 @endsection
