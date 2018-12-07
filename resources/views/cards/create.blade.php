@@ -40,6 +40,20 @@
                     @endif
                 </div>
                 <div class="form-group">
+                    <label for="status">Card status</label>
+                    <select name="status" class="form-control {{ $errors->has('cardcontent') ? ' is-invalid' : '' }}" id="status" value="{{ old('status') }}">
+                        {{ var_dump($statuses) }}
+                        @foreach($statuses as $status)
+                            <option value="{{$status->id}}">{{ $status->status }}</option>
+                        @endforeach
+                    </select>
+                    @if ($errors->has('status'))
+                        <span class="invalid-feedback">
+                            <strong>{{ $errors->first('status') }}</strong>
+                        </span>
+                    @endif
+                </div>
+                <div class="form-group">
                     <button class="btn btn-primary" type="submit">Save new card</button>
                 </div>
             </form>

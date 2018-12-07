@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Card;
+use App\Status;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -24,7 +25,10 @@ class CardController extends Controller
 
     public function create()
     {
-        return view('cards.create');
+        $data = array(
+            'statuses' => $statuses = Status::all()
+        );
+        return view('cards.create')->with($data);
     }
 
     public function store(Request $request)
@@ -32,12 +36,14 @@ class CardController extends Controller
         $this->validate($request, [
             'title' => 'required',
             'subtitle' => 'required',
-            'cardcontent' => 'required'
+            'cardcontent' => 'required',
+            'status' => 'required'
         ]);
 
         $card = Card::firstOrCreate(
             [
                 'user_id' => Auth::id(),
+                'status_id' => $request->status,
                 'title' => $request->title,
                 'subtitle' => $request->subtitle,
                 'content' => $request->cardcontent
