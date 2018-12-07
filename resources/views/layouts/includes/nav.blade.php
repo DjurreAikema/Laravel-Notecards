@@ -26,6 +26,8 @@
                         {{ Auth::user()->name }}
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Something else here</a>
+                        <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{ url('/logout') }}">Logout</a>
                     </div>
                 </li>

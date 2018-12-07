@@ -10866,6 +10866,10 @@ a.text-dark:focus {
   background-color: #F19F4D;
 }
 
+.active-cards {
+  background-color: rgba(241, 159, 77, 0.5);
+}
+
 .navbar-laravel {
   background-color: #fff;
   -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);

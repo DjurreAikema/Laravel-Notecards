@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Card;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,7 +16,9 @@ class CardController extends Controller
 
     public function index()
     {
-        $data = array('cards' => $cards = Card::all());
+        $data = array(
+            'cards' => $cards = Card::all()
+        );
         return view('user.dashboard')->with($data);
     }
 
@@ -60,8 +63,25 @@ class CardController extends Controller
         //
     }
 
+    public function softdelete($id)
+    {
+        $card = Card::where('id', $id);
+        $card->delete();
+        return back();
+    }
+
+    public function trash()
+    {
+        $data = array(
+            'cards' => $cards = Card::onlyTrashed()->get()
+        );
+        return view('cards.trash')->with($data);
+    }
+
     public function destroy($id)
     {
-        //
+        $card = Card::where('id', $id);
+        $card->forceDelete();
+        return back();
     }
 }

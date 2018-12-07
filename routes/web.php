@@ -23,4 +23,7 @@ Route::get('/home', 'CardController@index')->name('dashboard');
 Route::group(['prefix' => 'cards'], function () {
     Route::get('/create', 'CardController@create')->name('create.card');
     Route::post('/store', 'CardController@store')->name('store.card');
+    Route::get('/remove/{card}', 'CardController@softdelete')->name('remove.card');
+    Route::get('/trash', 'CardController@trash')->name('trash.card');
+    Route::get('/delete/{card}', 'CardController@destroy')->name('delete.card');
 });

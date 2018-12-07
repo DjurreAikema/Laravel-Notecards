@@ -17,6 +17,8 @@ class CreateCardsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedInteger('status_id');
+            $table->foreign('status_id')->references('id')->on('status');
             $table->string('title');
             $table->string('subtitle');
             $table->string('content');
