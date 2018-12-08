@@ -2,16 +2,7 @@
 
 @section('content')
     {{-- Session flash --}}
-    <div class="row w-100" style="height: 50px;">
-        <div class="offset-md-2"></div>
-        @if(session()->has('message'))
-            <div id="successMessage" class="col-md-6" style="margin-top: -20px">
-                <div class="alert alert-success">
-                    {{ session()->get('message') }}
-                </div>
-            </div>
-        @endif
-    </div>
+    @include('layouts.includes.flash')
     <div class="row w-100 p-b-100">
         <div class="offset-md-1"></div>
         {{-- Finished cards --}}
@@ -32,7 +23,7 @@
                                 <p class="card-text">{{ $card->content }}</p>
                                 <hr>
                                 <a href="#" class="card-link">Restore card</a>
-                                <a href="{{ route('remove.card', $card->id) }}"
+                                <a href="{{ route('remove.card', ['card' => $card->id]) }}"
                                    class="card-link btn btn-outline-danger ">Remove card</a>
                             </div>
                         </div>
@@ -43,8 +34,12 @@
         {{-- Side menu --}}
         <div class="col-md-3">
             <div class="side-menu p-l-30 p-t-20 p-b-50 shadow">
+                <a class="btn btn-outline-info m-l-10 m-b-20 m-t-20" href="{{ route('create.card') }}">
+                    Add new card
+                </a>
+                <hr class="m-r-35 aluminium">
                 <ul>
-                    <li>View finished cards</li>
+                    <li><a href="{{ route('trash.card') }}">View removed cards</a></li>
                 </ul>
             </div>
         </div>

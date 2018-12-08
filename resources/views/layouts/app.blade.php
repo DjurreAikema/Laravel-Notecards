@@ -19,20 +19,29 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body class="body-background" style="background-image:url({{ url("/media/bgi.jpeg") }});background-position: center;background-repeat: no-repeat;background-size: cover;">
-    <div id="app" class="app-background">
-        @include('layouts.includes.nav')
+<body class="body-background"
+      style="background-image:url({{ url("/media/bgi.jpeg") }});background-position: center;background-repeat: no-repeat;background-size: cover;">
+<div id="app" class="app-background">
+    @include('layouts.includes.nav')
 
-        @yield('content')
+    @yield('content')
 
-        @include('layouts.includes.footer')
-    </div>
+    @include('layouts.includes.footer')
+</div>
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="{{ asset('js/bootstrap.min.js') }}"></script>
 
-    @yield('script')
+<script>
+    $(document).ready(function () {
+        setTimeout(function () {
+            $('#successMessage').fadeOut('fast');
+        }, 4000);
+    });
+</script>
+
+@yield('script')
 </body>
 </html>

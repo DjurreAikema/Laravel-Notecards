@@ -2,16 +2,7 @@
 
 @section('content')
     {{-- Session flash --}}
-    <div class="row w-100" style="height: 50px;">
-        <div class="offset-md-2"></div>
-        @if(session()->has('message'))
-            <div id="successMessage" class="col-md-6" style="margin-top: -20px">
-                <div class="alert alert-success">
-                    {{ session()->get('message') }}
-                </div>
-            </div>
-        @endif
-    </div>
+    @include('layouts.includes.flash')
     {{-- Cards --}}
     <div class="row w-100 p-b-100">
         <div class="offset-md-1"></div>
@@ -28,11 +19,11 @@
                                     <p class="card-text">{{ $card->content }}</p>
                                     <hr>
                                     <a href="#" class="card-link">Card status</a>
-                                    <a href="{{ route('finish.card', $card->id) }}"
+                                    <a href="{{ route('finish.card', ['card' => $card->id]) }}"
                                        class="card-link btn btn-outline-success ">Finish card</a>
                                     <a href="{{ route('edit.card', ['card' => $card->id]) }}"
                                        class="card-link btn btn-outline-warning ">Edit card</a>
-                                    <a href="{{ route('remove.card', $card->id) }}"
+                                    <a href="{{ route('remove.card', ['card' => $card->id]) }}"
                                        class="card-link btn btn-outline-danger ">Remove card</a>
                                 </div>
                             </div>
@@ -55,7 +46,7 @@
                                     <a href="#" class="card-link">Card status</a>
                                     <a href="{{ route('edit.card', ['card' => $card->id]) }}"
                                        class="card-link btn btn-outline-warning ">Edit card</a>
-                                    <a href="{{ route('remove.card', $card->id) }}"
+                                    <a href="{{ route('remove.card', ['card' => $card->id]) }}"
                                        class="card-link btn btn-outline-danger ">Remove card</a>
                                 </div>
                             </div>
@@ -79,14 +70,4 @@
             </div>
         </div>
     </div>
-@endsection
-
-@section('script')
-    <script>
-        $(document).ready(function () {
-            setTimeout(function () {
-                $('#successMessage').fadeOut('fast');
-            }, 4000);
-        });
-    </script>
 @endsection

@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+    {{-- Session flash --}}
+    @include('layouts.includes.flash')
     <div class="row w-100 p-b-100">
         <div class="offset-md-2"></div>
         <div class="col-md-4 card p-4">
@@ -73,7 +75,7 @@
         <div class="col-md-3">
             <div class="side-menu p-l-30 p-t-20 p-b-50 shadow">
                 <ul>
-                    <li>View finished cards</li>
+                    <li><a href="{{ route('finished.card') }}">View finished cards</a></li>
                     <li><a href="{{ route('trash.card') }}">View removed cards</a></li>
                 </ul>
             </div>

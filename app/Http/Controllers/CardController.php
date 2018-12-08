@@ -89,9 +89,9 @@ class CardController extends Controller
     }
 
     // Change the status of the selected card to finished
-    public function finish($id)
+    public function finish(Card $card)
     {
-        $card = Card::where('id', $id)->update(['status_id' => 3]);
+        $card->update(['status_id' => 3]);
         return back()->with('message', 'Card moved to finished!');
     }
 
@@ -105,9 +105,8 @@ class CardController extends Controller
     }
 
     // Soft delete the selected card
-    public function softdelete($id)
+    public function softdelete(Card $card)
     {
-        $card = Card::where('id', $id);
         $card->delete();
         return back();
     }
