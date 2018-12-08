@@ -12,10 +12,10 @@
 */
 Auth::routes();
 
-Route::get('/', 'CardController@index')->name('index'); //Send user to dashboard
-Route::get('/home', 'CardController@index')->name('dashboard'); //Send user to dashboard
+Route::get('/', 'HomeController@index')->name('index'); //Send user to dashboard (index page)
+Route::get('/home', 'HomeController@index')->name('dashboard'); //Send user to dashboard (index page)
 
-Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout'); //Log user out
+Route::get('/logout', 'Auth\LoginController@logout'); //Log user out
 
 Route::group(['prefix' => 'cards'], function () {
     Route::get('/create', 'CardController@create')->name('create.card'); //Create a new card page
@@ -30,4 +30,9 @@ Route::group(['prefix' => 'cards'], function () {
 
     Route::get('/finished', 'CardController@finished')->name('finished.card'); //See finished cards
     Route::get('/finish/{card}', 'CardController@finish')->name('finish.card'); //Add card to finished
+});
+
+Route::group(['prefix' => 'user'], function () {
+    Route::get('/profile/{user}', 'UserController@show')->name('user.profile'); //See user profile
+    Route::patch('/update/{user}', 'UserController@update')->name('update.profile'); //Save profile changes
 });

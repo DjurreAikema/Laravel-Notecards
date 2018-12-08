@@ -17,15 +17,6 @@ class CardController extends Controller
         $this->middleware('auth');
     }
 
-    // Send the user to the user.dashboard page
-    public function index()
-    {
-        $data = array(
-            'cards' => $cards = Card::all()
-        );
-        return view('user.dashboard')->with($data);
-    }
-
     // Send the user to the cards.create page
     public function create()
     {
@@ -58,11 +49,6 @@ class CardController extends Controller
         return redirect(route('dashboard'));
     }
 
-    public function show($id)
-    {
-        //
-    }
-
     // Send the user to the cards.edit page
     public function edit(Card $card)
     {
@@ -76,6 +62,13 @@ class CardController extends Controller
     // Update the selected card with the new values
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'title' => 'required',
+            'subtitle' => 'required',
+            'cardcontent' => 'required',
+            'status' => 'required'
+        ]);
+
         $card = Card::find($id);
 
         $card->status_id = $request->status;
