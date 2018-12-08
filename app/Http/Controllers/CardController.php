@@ -60,7 +60,7 @@ class CardController extends Controller
     }
 
     // Update the selected card with the new values
-    public function update(Request $request, $id)
+    public function update(Request $request, Card $card)
     {
         $this->validate($request, [
             'title' => 'required',
@@ -68,9 +68,7 @@ class CardController extends Controller
             'cardcontent' => 'required',
             'status' => 'required'
         ]);
-
-        $card = Card::find($id);
-
+        
         $card->status_id = $request->status;
         $card->title = $request->title;
         $card->subtitle = $request->subtitle;
