@@ -30,6 +30,8 @@
                                     <a href="#" class="card-link">Card status</a>
                                     <a href="{{ route('finish.card', $card->id) }}"
                                        class="card-link btn btn-outline-success ">Finish card</a>
+                                    <a href="{{ route('edit.card', ['card' => $card->id]) }}"
+                                       class="card-link btn btn-outline-warning ">Edit card</a>
                                     <a href="{{ route('remove.card', $card->id) }}"
                                        class="card-link btn btn-outline-danger ">Remove card</a>
                                 </div>
@@ -51,6 +53,8 @@
                                     <p class="card-text">{{ $card->content }}</p>
                                     <hr>
                                     <a href="#" class="card-link">Card status</a>
+                                    <a href="{{ route('edit.card', ['card' => $card->id]) }}"
+                                       class="card-link btn btn-outline-warning ">Edit card</a>
                                     <a href="{{ route('remove.card', $card->id) }}"
                                        class="card-link btn btn-outline-danger ">Remove card</a>
                                 </div>

@@ -25,6 +25,8 @@ Route::group(['prefix' => 'cards'], function () {
     Route::post('/store', 'CardController@store')->name('store.card');
     Route::get('/remove/{card}', 'CardController@softdelete')->name('remove.card');
     Route::get('/finish/{card}', 'CardController@finish')->name('finish.card');
+    Route::get('/edit/{card}', 'CardController@edit')->name('edit.card');
+    Route::patch('/update/{card}', 'CardController@update')->name('update.card');
     Route::get('/trash', 'CardController@trash')->name('trash.card');
     Route::get('/finished', 'CardController@finished')->name('finished.card');
     Route::get('/delete/{card}', 'CardController@destroy')->name('delete.card');
