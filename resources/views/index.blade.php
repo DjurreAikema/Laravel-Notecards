@@ -18,14 +18,25 @@
                                     <h6 class="card-subtitle mb-2 text-muted">{{ $card->subtitle }}</h6>
                                     <p class="card-text">{{ $card->content }}</p>
                                     <hr>
+                                    {{-- Change the card status to finished --}}
                                     <a href="{{ route('finish.card', ['card' => $card->id]) }}"
-                                       class="card-link btn btn-outline-success"><i class="fas fa-check"></i></a>
-                                    <a href="#" class="card-link btn btn-outline-secondary"><i class="fas fa-chevron-down"></i></a>
+                                       class="card-link btn btn-outline-success"><i class="fas fa-check"></i>
+                                    </a>
+                                    {{-- Change status between waiting and active --}}
+                                    <a href="{{ route('swap.card.status', ['card' => $card->id]) }}"
+                                       class="card-link btn btn-outline-secondary">
+                                        <i class="fas fa-chevron-down"></i>
+                                    </a>
                                     <div class="float-right">
+                                        {{-- Edit card --}}
                                         <a href="{{ route('edit.card', ['card' => $card->id]) }}"
-                                           class="card-link btn btn-outline-primary"><i class="fas fa-pencil-alt"></i></a>
+                                           class="card-link btn btn-outline-primary">
+                                            <i class="fas fa-pencil-alt"></i>
+                                        </a>
+                                        {{-- Softdelete card --}}
                                         <a href="{{ route('remove.card', ['card' => $card->id]) }}"
-                                           class="card-link btn btn-outline-danger"><i class="fas fa-times"></i></a>
+                                           class="card-link btn btn-outline-danger"><i class="fas fa-times"></i>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -45,12 +56,21 @@
                                     <h6 class="card-subtitle mb-2 text-muted">{{ $card->subtitle }}</h6>
                                     <p class="card-text">{{ $card->content }}</p>
                                     <hr>
-                                    <a href="#" class="card-link btn btn-outline-secondary"><i class="fas fa-chevron-up"></i></a>
+                                    {{-- Change status between waiting and active --}}
+                                    <a href="{{ route('swap.card.status', ['card' => $card->id]) }}"
+                                       class="card-link btn btn-outline-secondary">
+                                        <i class="fas fa-chevron-up"></i>
+                                    </a>
                                     <div class="float-right">
+                                        {{-- Edit card --}}
                                         <a href="{{ route('edit.card', ['card' => $card->id]) }}"
-                                           class="card-link btn btn-outline-primary"><i class="fas fa-pencil-alt"></i></a>
+                                           class="card-link btn btn-outline-primary"><i
+                                                    class="fas fa-pencil-alt"></i>
+                                        </a>
+                                        {{-- Softdelete card --}}
                                         <a href="{{ route('remove.card', ['card' => $card->id]) }}"
-                                           class="card-link btn btn-outline-danger"><i class="fas fa-times"></i></a>
+                                           class="card-link btn btn-outline-danger"><i class="fas fa-times"></i>
+                                        </a>
                                     </div>
                                 </div>
                             </div>

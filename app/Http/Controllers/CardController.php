@@ -118,4 +118,20 @@ class CardController extends Controller
         $card->forceDelete();
         return back();
     }
+
+    public function swapStatus(Card $card)
+    {
+        switch ($card->status_id) {
+            case 1:
+                $card->status_id = 2;
+                $card->save();
+                break;
+            case 2:
+                $card->status_id = 1;
+                $card->save();
+                break;
+        }
+
+        return back();
+    }
 }
