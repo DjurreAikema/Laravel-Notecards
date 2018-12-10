@@ -18,13 +18,15 @@
                                     <h6 class="card-subtitle mb-2 text-muted">{{ $card->subtitle }}</h6>
                                     <p class="card-text">{{ $card->content }}</p>
                                     <hr>
-                                    <a href="#" class="card-link">Card status</a>
                                     <a href="{{ route('finish.card', ['card' => $card->id]) }}"
-                                       class="card-link btn btn-outline-success ">Finish card</a>
-                                    <a href="{{ route('edit.card', ['card' => $card->id]) }}"
-                                       class="card-link btn btn-outline-warning ">Edit card</a>
-                                    <a href="{{ route('remove.card', ['card' => $card->id]) }}"
-                                       class="card-link btn btn-outline-danger ">Remove card</a>
+                                       class="card-link btn btn-outline-success"><i class="fas fa-check"></i></a>
+                                    <a href="#" class="card-link btn btn-outline-secondary"><i class="fas fa-chevron-down"></i></a>
+                                    <div class="float-right">
+                                        <a href="{{ route('edit.card', ['card' => $card->id]) }}"
+                                           class="card-link btn btn-outline-primary"><i class="fas fa-pencil-alt"></i></a>
+                                        <a href="{{ route('remove.card', ['card' => $card->id]) }}"
+                                           class="card-link btn btn-outline-danger"><i class="fas fa-times"></i></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -43,11 +45,13 @@
                                     <h6 class="card-subtitle mb-2 text-muted">{{ $card->subtitle }}</h6>
                                     <p class="card-text">{{ $card->content }}</p>
                                     <hr>
-                                    <a href="#" class="card-link">Card status</a>
-                                    <a href="{{ route('edit.card', ['card' => $card->id]) }}"
-                                       class="card-link btn btn-outline-warning ">Edit card</a>
-                                    <a href="{{ route('remove.card', ['card' => $card->id]) }}"
-                                       class="card-link btn btn-outline-danger ">Remove card</a>
+                                    <a href="#" class="card-link btn btn-outline-secondary"><i class="fas fa-chevron-up"></i></a>
+                                    <div class="float-right">
+                                        <a href="{{ route('edit.card', ['card' => $card->id]) }}"
+                                           class="card-link btn btn-outline-primary"><i class="fas fa-pencil-alt"></i></a>
+                                        <a href="{{ route('remove.card', ['card' => $card->id]) }}"
+                                           class="card-link btn btn-outline-danger"><i class="fas fa-times"></i></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -59,7 +63,7 @@
         {{-- Side menu --}}
         <div class="col-md-3">
             <div class="side-menu p-l-30 p-t-20 p-b-50 shadow">
-                <a class="btn btn-outline-info m-l-10 m-b-20 m-t-20" href="{{ route('create.card') }}">
+                <a class="btn btn-outline-primary m-l-10 m-b-20 m-t-20" href="{{ route('create.card') }}">
                     Add new card
                 </a>
                 <hr class="m-r-35 aluminium">

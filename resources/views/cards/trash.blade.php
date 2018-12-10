@@ -9,9 +9,16 @@
         <div class="col-md-8">
             <div class="row p-3 trashed-cards">
                 @if($cards->isEmpty())
-                    <div class="offset-md-3"></div>
-                    <div class="col-md-8">
-                        <h1>There are no cards in your trash bin</h1>
+                    <div class="col-md-4 p-1">
+                        <div class="card shadow">
+                            <div class="card-body">
+                                <h5 class="card-title">You have no trashed cards</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">
+                                    <hr>
+                                </h6>
+                                <p class="card-text">Came back when you have trashed some of your cards!</p>
+                            </div>
+                        </div>
                     </div>
                 @endif
                 @foreach($cards as $card)
@@ -22,9 +29,12 @@
                                 <h6 class="card-subtitle mb-2 text-muted">{{ $card->subtitle }}</h6>
                                 <p class="card-text">{{ $card->content }}</p>
                                 <hr>
-                                <a href="#" class="card-link">Restore card</a>
-                                <a href="{{ route('delete.card', $card->id) }}"
-                                   class="card-link btn btn-outline-danger ">Delete card</a>
+                                <div class="float-right">
+                                    <a href="{{ route('edit.card', ['card' => $card->id]) }}"
+                                       class="card-link btn btn-outline-primary"><i class="fas fa-pencil-alt"></i></a>
+                                    <a href="{{ route('delete.card', $card->id) }}"
+                                       class="card-link btn btn-outline-danger "><i class="fas fa-trash-alt"></i></a>
+                                </div>
                             </div>
                         </div>
                     </div>

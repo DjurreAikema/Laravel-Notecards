@@ -9,9 +9,14 @@
         <div class="col-md-8">
             <div class="row p-3 finished-cards">
                 @if($cards->isEmpty())
-                    <div class="offset-md-3"></div>
-                    <div class="col-md-8">
-                        <h1>You have no finished cards</h1>
+                    <div class="col-md-4 p-1">
+                        <div class="card shadow">
+                            <div class="card-body">
+                                <h5 class="card-title">You have no finished cards</h5>
+                                <h6 class="card-subtitle mb-2 text-muted"><hr></h6>
+                                <p class="card-text">Came back when you have finished some of your cards!</p>
+                            </div>
+                        </div>
                     </div>
                 @endif
                 @foreach($cards as $card)
@@ -22,9 +27,12 @@
                                 <h6 class="card-subtitle mb-2 text-muted">{{ $card->subtitle }}</h6>
                                 <p class="card-text">{{ $card->content }}</p>
                                 <hr>
-                                <a href="#" class="card-link">Restore card</a>
-                                <a href="{{ route('remove.card', ['card' => $card->id]) }}"
-                                   class="card-link btn btn-outline-danger ">Remove card</a>
+                                <div class="float-right">
+                                    <a href="{{ route('edit.card', ['card' => $card->id]) }}"
+                                       class="card-link btn btn-outline-primary"><i class="fas fa-pencil-alt"></i></a>
+                                    <a href="{{ route('remove.card', ['card' => $card->id]) }}"
+                                       class="card-link btn btn-outline-danger"><i class="fas fa-times"></i></a>
+                                </div>
                             </div>
                         </div>
                     </div>

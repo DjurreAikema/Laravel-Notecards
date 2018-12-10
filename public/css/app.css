@@ -10873,14 +10873,14 @@ a.text-dark:focus {
 }
 
 .finished-cards {
-  background-color: rgba(241, 159, 77, 0.2);
-  border: 3px solid rgba(241, 159, 77, 0.7);
+  background-color: rgba(92, 184, 92, 0.2);
+  border: 3px solid rgba(92, 184, 92, 0.7);
   border-radius: 5px;
 }
 
 .trashed-cards {
-  background-color: rgba(241, 159, 77, 0.2);
-  border: 3px solid rgba(241, 159, 77, 0.7);
+  background-color: rgba(217, 83, 79, 0.2);
+  border: 3px solid rgba(217, 83, 79, 0.7);
   border-radius: 5px;
 }
 

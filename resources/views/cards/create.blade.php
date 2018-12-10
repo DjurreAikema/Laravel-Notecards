@@ -72,6 +72,8 @@
         {{-- Side menu --}}
         <div class="col-md-3">
             <div class="side-menu p-l-30 p-t-20 p-b-50 shadow">
+                <p>Create a new card</p>
+                <hr class="m-r-35 aluminium">
                 <ul>
                     <li><a href="{{ route('finished.card') }}">View finished cards</a></li>
                     <li><a href="{{ route('trash.card') }}">View removed cards</a></li>
