@@ -10,7 +10,6 @@
                 <h4>Edit your card</h4>
                 <hr class="aluminium">
             </div>
-
             {{-- Edit card form --}}
             <form method="POST" action="{{ route('update.card', ['card' => $card->id]) }}"
                   enctype="multipart/form-data">
@@ -70,7 +69,6 @@
             </form>
         </div>
         <div class="offset-md-3"></div>
-
         {{-- Side menu --}}
         <div class="col-md-3">
             <div class="side-menu p-l-30 p-t-20 p-b-50 shadow">

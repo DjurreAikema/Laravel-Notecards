@@ -45,7 +45,6 @@ class CardController extends Controller
                 'content' => $request->cardcontent
             ]
         );
-
         return redirect(route('dashboard'));
     }
 
@@ -119,6 +118,7 @@ class CardController extends Controller
         return back();
     }
 
+    // Swap between waiting and active card status
     public function swapStatus(Card $card)
     {
         switch ($card->status_id) {
@@ -131,7 +131,13 @@ class CardController extends Controller
                 $card->save();
                 break;
         }
+        return back();
+    }
 
+    public function chooseStatus(Card $card, $status)
+    {
+        $card->status_id = $status;
+        $card->save();
         return back();
     }
 }

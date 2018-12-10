@@ -5,7 +5,7 @@
     @include('layouts.includes.flash')
     <div class="row w-100 p-b-100">
         <div class="offset-md-1"></div>
-        {{-- Softdeleted cards --}}
+        {{-- Show softdeleted cards --}}
         <div class="col-md-8">
             <div class="row p-3 trashed-cards">
                 @if($cards->isEmpty())
@@ -29,11 +29,30 @@
                                 <h6 class="card-subtitle mb-2 text-muted">{{ $card->subtitle }}</h6>
                                 <p class="card-text">{{ $card->content }}</p>
                                 <hr>
+                                {{-- Choose status dropdown --}}
+                                <div class="dropdown float-left">
+                                    <button class="btn btn-outline-secondary dropdown-toggle" type="button"
+                                            id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false">
+                                        <i class="fas fa-bars"></i>
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item"
+                                           href="{{ route('choose.card.status', ['card' => $card->id,1]) }}">Waiting
+                                        </a>
+                                        <a class="dropdown-item"
+                                           href="{{ route('choose.card.status', ['card' => $card->id,2]) }}">Active
+                                        </a>
+                                        <a class="dropdown-item"
+                                           href="{{ route('choose.card.status', ['card' => $card->id,3]) }}">Finished
+                                        </a>
+                                    </div>
+                                </div>
                                 <div class="float-right">
-                                    <a href="{{ route('edit.card', ['card' => $card->id]) }}"
-                                       class="card-link btn btn-outline-primary"><i class="fas fa-pencil-alt"></i></a>
+                                    {{-- Delete card --}}
                                     <a href="{{ route('delete.card', $card->id) }}"
-                                       class="card-link btn btn-outline-danger "><i class="fas fa-trash-alt"></i></a>
+                                       class="card-link btn btn-outline-danger "><i class="fas fa-trash-alt"></i>
+                                    </a>
                                 </div>
                             </div>
                         </div>

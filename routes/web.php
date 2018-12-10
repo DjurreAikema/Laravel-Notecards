@@ -32,6 +32,7 @@ Route::group(['prefix' => 'cards'], function () {
     Route::get('/finish/{card}', 'CardController@finish')->name('finish.card'); //Add card to finished
 
     Route::get('/swapstatus/{card}', 'CardController@swapStatus')->name('swap.card.status');//Swap between waiting and active
+    Route::get('/choosestatus/{card}/{status}', 'CardController@chooseStatus')->name('choose.card.status');//Choose the cards status
 });
 
 Route::group(['prefix' => 'user'], function () {
