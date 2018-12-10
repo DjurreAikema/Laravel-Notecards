@@ -45,7 +45,7 @@ class CardController extends Controller
                 'content' => $request->cardcontent
             ]
         );
-        return redirect(route('dashboard'));
+        return redirect(route('dashboard'))->with('message', 'Card has been created!');;
     }
 
     // Send the user to the cards.edit page
@@ -67,7 +67,7 @@ class CardController extends Controller
             'cardcontent' => 'required',
             'status' => 'required'
         ]);
-        
+
         $card->status_id = $request->status;
         $card->title = $request->title;
         $card->subtitle = $request->subtitle;
@@ -75,14 +75,14 @@ class CardController extends Controller
 
         $card->save();
 
-        return redirect(route('dashboard'));
+        return redirect(route('dashboard'))->with('message', 'Card has been updated!');;
     }
 
     // Change the status of the selected card to finished
     public function finish(Card $card)
     {
         $card->update(['status_id' => 3]);
-        return back()->with('message', 'Card moved to finished!');
+        return back()->with('message', 'Card has been moved to finished!');
     }
 
     // Send the user to the cards.finishes page
@@ -98,7 +98,7 @@ class CardController extends Controller
     public function softdelete(Card $card)
     {
         $card->delete();
-        return back();
+        return back()->with('message', 'Card has been moved to the trash!');;
     }
 
     // Send user to the cards.trash page
@@ -115,7 +115,18 @@ class CardController extends Controller
     {
         $card = Card::where('id', $id);
         $card->forceDelete();
-        return back();
+        return back()->with('message', 'Card has been deleted!');;
+    }
+
+    // Restore softdeleted cards
+    public function restore($id)
+    {
+        $card = Card::withTrashed()->find($id);
+        $card->restore();
+        $card->status_id = 1;
+        $card->save();
+
+        return back()->with('message', 'Card has been restored!');;
     }
 
     // Swap between waiting and active card status
@@ -131,13 +142,14 @@ class CardController extends Controller
                 $card->save();
                 break;
         }
-        return back();
+        return back()->with('message', 'Card status has been changed!');;
     }
 
+    //Choose what status a card should have
     public function chooseStatus(Card $card, $status)
     {
         $card->status_id = $status;
         $card->save();
-        return back();
+        return back()->with('message', 'Card has been returned to waiting!');;
     }
 }

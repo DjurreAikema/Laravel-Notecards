@@ -75,6 +75,7 @@
                 <p>Edit the selected card</p>
                 <hr class="m-r-35 aluminium">
                 <ul>
+                    <li><a href="{{ route('dashboard') }}">Return to dashboard</a></li>
                     <li><a href="{{ route('finished.card') }}">View finished cards</a></li>
                     <li><a href="{{ route('trash.card') }}">View removed cards</a></li>
                 </ul>

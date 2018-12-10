@@ -31,6 +31,7 @@ Route::group(['prefix' => 'cards'], function () {
     Route::get('/finished', 'CardController@finished')->name('finished.card'); //See finished cards
     Route::get('/finish/{card}', 'CardController@finish')->name('finish.card'); //Add card to finished
 
+    Route::get('/restore/{card}', 'CardController@restore')->name('restore.card');//Restore softdeleted cards
     Route::get('/swapstatus/{card}', 'CardController@swapStatus')->name('swap.card.status');//Swap between waiting and active
     Route::get('/choosestatus/{card}/{status}', 'CardController@chooseStatus')->name('choose.card.status');//Choose the cards status
 });

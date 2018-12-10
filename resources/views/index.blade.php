@@ -9,6 +9,15 @@
         <div class="col-md-8 p-r-30">
             {{-- Active cards --}}
             <div class="row p-3 active-cards">
+                {{-- Header --}}
+                <div class="col-md-12 p-1">
+                    <div class="card shadow">
+                        <div class="card-body">
+                            <h4 class="card-title">Active cards</h4>
+                            <hr class="aluminium" style="margin-bottom: -6px">
+                        </div>
+                    </div>
+                </div>
                 @foreach($cards as $card)
                     @if($card->status_id == 2)
                         <div class="col-md-6 p-3">
@@ -47,6 +56,15 @@
             <hr class="m-t-35" style="border: 1px solid #D9D9D9">
             {{-- Waiting cards --}}
             <div class="row p-3 waiting-cards">
+                {{-- Header --}}
+                <div class="col-md-12 p-1">
+                    <div class="card shadow">
+                        <div class="card-body">
+                            <h4 class="card-title">Waiting cards</h4>
+                            <hr class="aluminium" style="margin-bottom: -6px">
+                        </div>
+                    </div>
+                </div>
                 @foreach($cards as $card)
                     @if($card->status_id == 1)
                         <div class="col-md-4 p-1">
@@ -64,8 +82,7 @@
                                     <div class="float-right">
                                         {{-- Edit card --}}
                                         <a href="{{ route('edit.card', ['card' => $card->id]) }}"
-                                           class="card-link btn btn-outline-primary"><i
-                                                    class="fas fa-pencil-alt"></i>
+                                           class="card-link btn btn-outline-primary"><i class="fas fa-pencil-alt"></i>
                                         </a>
                                         {{-- Softdelete card --}}
                                         <a href="{{ route('remove.card', ['card' => $card->id]) }}"

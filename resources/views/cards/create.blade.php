@@ -5,7 +5,7 @@
     @include('layouts.includes.flash')
     <div class="row w-100 p-b-100">
         <div class="offset-md-2"></div>
-        <div class="col-md-4 card p-4">
+        <div class="col-md-4 card p-4 shadow">
             <div>
                 <h4>Create a new card</h4>
                 <hr class="aluminium">
@@ -75,6 +75,7 @@
                 <p>Create a new card</p>
                 <hr class="m-r-35 aluminium">
                 <ul>
+                    <li><a href="{{ route('dashboard') }}">Return to dashboard</a></li>
                     <li><a href="{{ route('finished.card') }}">View finished cards</a></li>
                     <li><a href="{{ route('trash.card') }}">View removed cards</a></li>
                 </ul>
